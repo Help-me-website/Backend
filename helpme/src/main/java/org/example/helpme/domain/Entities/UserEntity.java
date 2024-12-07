@@ -55,6 +55,4 @@ public class UserEntity {
     public enum AccountStatus {
         ACTIVE, SUSPENDED, DEACTIVATED
     }
-
-
 }
