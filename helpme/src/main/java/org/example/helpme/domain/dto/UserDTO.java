@@ -1,4 +1,4 @@
-package org.example.helpme.models;
+package org.example.helpme.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class UserDTO {
     private int id;
     private String firstName;
     private String lastName;

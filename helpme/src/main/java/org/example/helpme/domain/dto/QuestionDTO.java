@@ -1,4 +1,4 @@
-package org.example.helpme.models;
+package org.example.helpme.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +11,13 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Comment {
-    private int commentId;
+public class QuestionDTO {
     private int questionId;
-    private int answerId;
     private int userId;
-    private Question question;
+    private String title;
     private String content;
-    private Date created;
+    private int views;
+    private int numberOfUsers;
+    private Date createdAt;
+    private Date updatedAt;
 }
