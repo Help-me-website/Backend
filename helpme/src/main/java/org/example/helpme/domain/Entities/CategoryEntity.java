@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 import java.sql.Date;
 
 @Entity
-@Table(name = "categorie")
+@Table(name = "category")
 public class CategoryEntity {
     @Id
     private Long category_id;

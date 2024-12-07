@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "questioncategorie")
+@Table(name = "questionCategory")
 public class QuestionCategoryEntity {
     @Id
     private Long id;
