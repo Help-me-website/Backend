@@ -1,4 +1,4 @@
-package org.example.helpme.models;
+package org.example.helpme.domain.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Category {
+public class CategoryDTO {
     private int id;
     private String name;
     private String description;
