@@ -3,10 +3,10 @@ package org.example.helpme.services;
 import org.example.helpme.domain.Entities.CategoryEntity;
 import org.example.helpme.repositories.CategoryRepo;
 
-public class CaregoryService {
+public class CategoryService {
     private final CategoryRepo categoryRepo;
 
-    public CaregoryService(CategoryRepo categoryRepo) {
+    public CategoryService(CategoryRepo categoryRepo) {
         this.categoryRepo = categoryRepo;
     }
 

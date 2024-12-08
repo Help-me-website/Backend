@@ -11,24 +11,28 @@ import java.time.LocalDateTime;
 public class QuestionEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "question_id")
     private Integer questionId;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "title", nullable = false, length = 255)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    private Integer views = 0;
+    @Column(name = "views", nullable = false, columnDefinition = "int default 0")
+    private Integer views;
 
-    private Integer numberOfUsers = 1;
+    @Column(name = "number_of_users", nullable = false, columnDefinition = "int default 1")
+    private Integer numberOfUsers;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt = LocalDateTime.now();
-
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }

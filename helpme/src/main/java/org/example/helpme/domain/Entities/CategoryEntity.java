@@ -1,18 +1,26 @@
 package org.example.helpme.domain.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "category")
+@Table(name = "Category")
 public class CategoryEntity {
     @Id
-    private Long category_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "category_id")
+    private Integer categoryId;
+
+    @Column(name = "name", nullable = false, unique = true, length = 50)
     private String name;
+
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
-    private Date created_at;
+
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
 }

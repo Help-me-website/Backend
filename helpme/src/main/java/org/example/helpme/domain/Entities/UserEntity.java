@@ -16,43 +16,54 @@ import java.time.LocalDateTime;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @Column(nullable = false, unique = true, length = 100)
+    @Column(name = "email", nullable = false, unique = true, length = 100)
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false, length = 255)
     private String password;
 
-    private Integer reputation = 0;
+    @Column(name = "reputation", nullable = false, columnDefinition = "int default 0")
+    private Integer reputation;
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    @Column(name = "role", nullable = false, columnDefinition = "ENUM('user', 'moderator', 'admin') default 'user'")
+    private Role role;
 
     @Enumerated(EnumType.STRING)
-    private AccountStatus accountStatus = AccountStatus.ACTIVE;
+    @Column(name = "account_status", nullable = false, columnDefinition = "ENUM('active', 'suspended', 'deactivated') default 'active'")
+    private AccountStatus accountStatus;
 
+    @Column(name = "profile_picture", columnDefinition = "TEXT")
     private String profilePicture;
 
+    @Column(name = "bio", columnDefinition = "TEXT")
     private String bio;
 
+    @Column(name = "last_login")
     private LocalDateTime lastLogin;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt = LocalDateTime.now();
-
-    public enum Role {
-        USER, MODERATOR, ADMIN
-    }
-
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
     public enum AccountStatus {
-        ACTIVE, SUSPENDED, DEACTIVATED
+        active,
+        suspended,
+        deactivated
+    }
+    public enum Role {
+        user,
+        moderator,
+        admin
     }
 }

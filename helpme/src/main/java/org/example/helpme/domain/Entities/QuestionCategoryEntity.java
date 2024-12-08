@@ -1,15 +1,21 @@
 package org.example.helpme.domain.Entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "questionCategory")
+@Table(name = "QuestionCategory")
 public class QuestionCategoryEntity {
-    @Id
-    private Long id;
-    private Long question_id;
-    private Long category_id;
+    @EmbeddedId
+    private QuestionCategoryId id;
+
+    @MapsId("questionId")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "question_id", nullable = false)
+    private QuestionEntity question;
+
+    @MapsId("categoryId") 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private CategoryEntity category;
 }
