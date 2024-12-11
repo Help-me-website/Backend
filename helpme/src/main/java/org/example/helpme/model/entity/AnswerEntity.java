@@ -1,4 +1,4 @@
-package org.example.helpme.domain.Entities;
+package org.example.helpme.model.entity;
 
 
 import jakarta.persistence.*;
@@ -7,7 +7,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity

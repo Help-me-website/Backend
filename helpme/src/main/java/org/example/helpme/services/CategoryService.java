@@ -1,27 +1,27 @@
 package org.example.helpme.services;
 
-import org.example.helpme.domain.Entities.CategoryEntity;
-import org.example.helpme.repositories.CategoryRepo;
+import org.example.helpme.model.entity.CategoryEntity;
+import org.example.helpme.repository.CategoryRepository;
 
 public class CategoryService {
-    private final CategoryRepo categoryRepo;
+    private final CategoryRepository categoryRepository;
 
-    public CategoryService(CategoryRepo categoryRepo) {
-        this.categoryRepo = categoryRepo;
+    public CategoryService(CategoryRepository categoryRepository) {
+        this.categoryRepository = categoryRepository;
     }
 
     public Iterable<CategoryEntity> getAllCategories() {
-        return categoryRepo.findAll();
+        return categoryRepository.findAll();
     }
     public void addCategory(CategoryEntity category) {
-        categoryRepo.save(category);
+        categoryRepository.save(category);
     }
 
     public void removeCategory(CategoryEntity category) {
-        categoryRepo.delete(category);
+        categoryRepository.delete(category);
     }
 
     public void updateCategory(CategoryEntity category) {
-        categoryRepo.delete(category);
+        categoryRepository.delete(category);
     }
 }

@@ -1,9 +1,8 @@
-package org.example.helpme.domain.Entities;
+package org.example.helpme.model.entity;
 
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Entity

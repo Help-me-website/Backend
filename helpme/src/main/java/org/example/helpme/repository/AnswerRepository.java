@@ -1,13 +1,12 @@
-package org.example.helpme.repositories;
+package org.example.helpme.repository;
 
-import org.example.helpme.domain.Entities.AnswerEntity;
-import org.example.helpme.domain.dto.AnswerDTO;
+import org.example.helpme.model.entity.AnswerEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface AnswerRepo extends BaseRepo<AnswerEntity, Integer> {
+public interface AnswerRepository extends BaseRepository<AnswerEntity, Integer> {
     List<AnswerEntity> findByQuestionQuestionId(Integer questionId);
 
     List<AnswerEntity> findByUserUserId(Integer userId);

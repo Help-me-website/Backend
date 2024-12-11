@@ -1,10 +1,11 @@
-package org.example.helpme.domain.dto;
+package org.example.helpme.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -15,5 +16,5 @@ public class CategoryDTO {
     private int id;
     private String name;
     private String description;
-    private Date created;
+    private LocalDateTime created;
 }
