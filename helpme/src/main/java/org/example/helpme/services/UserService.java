@@ -1,23 +1,23 @@
 package org.example.helpme.services;
 
-import org.example.helpme.domain.Entities.UserEntity;
-import org.example.helpme.repositories.UserRepo;
+import org.example.helpme.model.entity.UserEntity;
+import org.example.helpme.repository.UserRepository;
 
 public class UserService {
-    private final UserRepo userRepo;
-    public UserService(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    private final UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
     public Iterable<UserEntity> getAllUsers() {
-        return userRepo.findAll();
+        return userRepository.findAll();
     }
     public void addUser(UserEntity userDTO) {
-        userRepo.save(userDTO);
+        userRepository.save(userDTO);
     }
     public void removeUser(UserEntity userDTO) {
-        userRepo.delete(userDTO);
+        userRepository.delete(userDTO);
     }
     public void updateUser(UserEntity userDTO) {
-        userRepo.save(userDTO);
+        userRepository.save(userDTO);
     }
 }

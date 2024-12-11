@@ -1,23 +1,23 @@
 package org.example.helpme.services;
 
-import org.example.helpme.domain.Entities.CommentEntity;
-import org.example.helpme.repositories.CommentRepo;
+import org.example.helpme.model.entity.CommentEntity;
+import org.example.helpme.repository.CommentRepository;
 
 public class CommentService {
-    private final CommentRepo commentRepo;
-    public CommentService(CommentRepo commentRepo) {
-        this.commentRepo = commentRepo;
+    private final CommentRepository commentRepository;
+    public CommentService(CommentRepository commentRepository) {
+        this.commentRepository = commentRepository;
     }
     public Iterable<CommentEntity> getAllComments() {
-        return commentRepo.findAll();
+        return commentRepository.findAll();
     }
     public void addComment(CommentEntity comment) {
-        commentRepo.save(comment);
+        commentRepository.save(comment);
     }
     public void removeComment(CommentEntity comment) {
-        commentRepo.delete(comment);
+        commentRepository.delete(comment);
     }
     public void updateComment(CommentEntity comment) {
-        commentRepo.save(comment);
+        commentRepository.save(comment);
     }
 }

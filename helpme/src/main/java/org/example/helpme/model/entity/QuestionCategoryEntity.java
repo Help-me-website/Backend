@@ -1,4 +1,4 @@
-package org.example.helpme.domain.Entities;
+package org.example.helpme.model.entity;
 
 
 import jakarta.persistence.*;

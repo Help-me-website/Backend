@@ -1,11 +1,17 @@
-package org.example.helpme.domain.Entities;
+package org.example.helpme.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class QuestionCategoryId implements Serializable {
 
     @Column(name = "question_id")
@@ -13,34 +19,6 @@ public class QuestionCategoryId implements Serializable {
 
     @Column(name = "category_id")
     private Integer categoryId;
-
-    // Default constructor
-    public QuestionCategoryId() {}
-
-    // Constructor
-    public QuestionCategoryId(Integer questionId, Integer categoryId) {
-        this.questionId = questionId;
-        this.categoryId = categoryId;
-    }
-
-    // Getters and Setters
-    public Integer getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(Integer questionId) {
-        this.questionId = questionId;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    // Equals and HashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

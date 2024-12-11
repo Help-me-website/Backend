@@ -1,11 +1,11 @@
-package org.example.helpme.repositories;
+package org.example.helpme.repository;
 
-import org.example.helpme.domain.Entities.CommentEntity;
+import org.example.helpme.model.entity.CommentEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface CommentRepo extends BaseRepo<CommentEntity, Integer> {
+public interface CommentRepository extends BaseRepository<CommentEntity, Integer> {
     // anyone
     List<CommentEntity> findByQuestionQuestionId(Integer questionId);
 

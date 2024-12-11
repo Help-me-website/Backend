@@ -1,14 +1,14 @@
 package org.example.helpme.services;
 
-import org.example.helpme.domain.Entities.AnswerEntity;
-import org.example.helpme.repositories.AnswerRepo;
+import org.example.helpme.model.entity.AnswerEntity;
+import org.example.helpme.repository.AnswerRepository;
 
 import java.util.List;
 
 public class AnswerService {
-    private final AnswerRepo answerRepo;
+    private final AnswerRepository answerRepo;
 
-    public AnswerService(AnswerRepo answerRepo) {
+    public AnswerService(AnswerRepository answerRepo) {
         this.answerRepo = answerRepo;
     }
 
