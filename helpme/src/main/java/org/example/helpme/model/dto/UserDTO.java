@@ -5,13 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UserDTO {
+public class UserDTO implements Serializable {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -19,4 +20,8 @@ public class UserDTO {
     private LocalDateTime createdAt;
     private Boolean isActive;
     private String role;
+    private String bio;
+    private String profilePicture;
+
+
 }

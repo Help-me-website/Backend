@@ -4,10 +4,11 @@ import org.example.helpme.mapper.CommentMapper;
 import org.example.helpme.model.dto.CommentDTO;
 import org.example.helpme.model.entity.CommentEntity;
 import org.example.helpme.repository.CommentRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class CommentService {
     private final CommentRepository commentRepository;
     private final CommentMapper commentMapper;

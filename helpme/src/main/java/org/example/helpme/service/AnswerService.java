@@ -4,10 +4,11 @@ import org.example.helpme.mapper.AnswerMapper;
 import org.example.helpme.model.dto.AnswerDTO;
 import org.example.helpme.model.entity.AnswerEntity;
 import org.example.helpme.repository.AnswerRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class AnswerService {
     private final AnswerRepository answerRepo;
     private final AnswerMapper answerMapper;

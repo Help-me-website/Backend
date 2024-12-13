@@ -1,18 +1,21 @@
 package org.example.helpme.service;
 
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.helpme.mapper.QuestionMapper;
 import org.example.helpme.model.dto.QuestionDTO;
 import org.example.helpme.model.entity.QuestionEntity;
 import org.example.helpme.repository.QuestionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 
-@Slf4j
+@Service
 public class QuestionService {
     private final QuestionRepository questionRepository;
     private final QuestionMapper questionMapper;

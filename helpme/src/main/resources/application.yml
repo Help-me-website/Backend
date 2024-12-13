@@ -8,14 +8,10 @@
 ##spring.security.user.name=admin
 #spring.jpa.open-in-view=false
 spring:
-  security:
-    user:
-      name: admin
-      password: admin
   datasource:
     url: jdbc:mysql://localhost:3306/helpme
     username: root
-    password: 10112003Ma.
+    password: AnaMezo?12
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:

@@ -72,7 +72,6 @@ public class UserEntity implements UserDetails {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
     }
-
     @PreUpdate
     private void onUpdate() {
         updatedAt = LocalDateTime.now();

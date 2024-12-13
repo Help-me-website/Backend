@@ -23,8 +23,10 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests
-                            .requestMatchers("/auth/**")
-                            .permitAll();
+                            .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/public/**").permitAll()
+                            .requestMatchers("/admin/**").hasRole("admin")
+                            .requestMatchers("/user/**").hasAnyRole("user","admin");
                     authorizeRequests.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session

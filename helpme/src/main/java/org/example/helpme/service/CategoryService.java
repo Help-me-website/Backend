@@ -4,10 +4,11 @@ import org.example.helpme.mapper.CategoryMapper;
 import org.example.helpme.model.dto.CategoryDTO;
 import org.example.helpme.model.entity.CategoryEntity;
 import org.example.helpme.repository.CategoryRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
