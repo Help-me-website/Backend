@@ -107,5 +107,9 @@ public class UserEntity implements UserDetails {
     public boolean isEnabled() {
         return accountStatus == AccountStatus.active;
     }
+    @Override
+    public String getPassword() {
+        return password;
+    }
 }
 
