@@ -3,6 +3,7 @@ package org.example.helpme.config;
 
 import lombok.RequiredArgsConstructor;
 import org.example.helpme.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -43,4 +44,10 @@ public class ApplicationConfig {
         return configuration.getAuthenticationManager();
     }
 
+    @Bean
+    public ModelMapper modelMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        // Add specific configurations here if needed
+        return modelMapper;
+    }
 }

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class UserDTO implements Serializable {
-    private Integer id;
+    private Integer userId;
     private String firstName;
     private String lastName;
     private String email;
@@ -22,6 +22,4 @@ public class UserDTO implements Serializable {
     private String role;
     private String bio;
     private String profilePicture;
-
-
 }

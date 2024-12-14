@@ -24,3 +24,5 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
 server:
   port: 8080
+jwt:
+  secret: "MQcCY4VKhhgNB2Ic7TNYs2BmNI/8mwjpXdEYtRfWmn4M6VSuqRSE4A5pxVuJPAnw"
