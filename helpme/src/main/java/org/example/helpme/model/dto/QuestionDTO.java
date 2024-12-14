@@ -14,10 +14,11 @@ import java.time.LocalDateTime;
 public class QuestionDTO {
     private Integer id;
     private String title;
-    private String description;
+    private String content;
+    private String category;
     private Integer userId;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private Integer answerCount;
+    private Integer numberOfUsers;
 
 }

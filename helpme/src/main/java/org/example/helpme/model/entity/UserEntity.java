@@ -72,7 +72,6 @@ public class UserEntity implements UserDetails {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
     }
-
     @PreUpdate
     private void onUpdate() {
         updatedAt = LocalDateTime.now();
@@ -106,6 +105,10 @@ public class UserEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return accountStatus == AccountStatus.active;
+    }
+    @Override
+    public String getPassword() {
+        return password;
     }
 }
 

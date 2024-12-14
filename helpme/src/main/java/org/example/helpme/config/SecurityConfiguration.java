@@ -1,6 +1,8 @@
 package org.example.helpme.config;
 
 import lombok.RequiredArgsConstructor;
+import org.example.helpme.model.entity.AccountStatus;
+import org.example.helpme.model.entity.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -23,8 +25,11 @@ public class SecurityConfiguration {
         http
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests
-                            .requestMatchers("/auth/**")
-                            .permitAll();
+                            .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/home/**").permitAll()
+                            .requestMatchers("/admin/**").hasRole("admin")
+                            .requestMatchers("/home/questions/add/**").authenticated()
+                            .requestMatchers("/user/**").authenticated();
                     authorizeRequests.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> session

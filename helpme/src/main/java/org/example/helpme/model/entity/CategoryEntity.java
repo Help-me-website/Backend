@@ -4,6 +4,7 @@ package org.example.helpme.model.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "Category")
@@ -22,4 +23,6 @@ public class CategoryEntity {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    private List<QuestionCategoryEntity> questionCategories;
 }
