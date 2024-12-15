@@ -42,4 +42,14 @@ public class AnswerEntity {
 
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+    @PrePersist
+    public void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+        isAccepted = false;
+    }
+    @PreUpdate
+    public void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
 }

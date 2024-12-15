@@ -4,6 +4,7 @@ import org.example.helpme.model.dto.QuestionDTO;
 import org.example.helpme.model.entity.QuestionEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface QuestionService {
     public Iterable<QuestionDTO> getQuestionsByUserEmail(String email);
     public Void deleteQuestion(Integer id);
     public List<QuestionDTO> getQuestionsByCategory(String categoryName);
-    public Page<QuestionEntity> getQuestions(String categoryName, String searchKeyword, Pageable pageable);
+    public List<QuestionDTO> getQuestionsByCategory(Integer categoryId);
 }

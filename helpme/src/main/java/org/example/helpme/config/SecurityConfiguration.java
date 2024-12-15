@@ -28,7 +28,8 @@ public class SecurityConfiguration {
                             .requestMatchers("/auth/**").permitAll()
                             .requestMatchers("/home/**").permitAll()
                             .requestMatchers("/admin/**").hasRole("admin")
-                            .requestMatchers("/home/questions/add/**").authenticated()
+                            .requestMatchers("/home/questions/**").permitAll()
+                            .requestMatchers("/home/questions/modify/**").authenticated()
                             .requestMatchers("/user/**").authenticated();
                     authorizeRequests.anyRequest().authenticated();
                 })

@@ -1,20 +1,15 @@
-package org.example.helpme.model.dto;
+package org.example.helpme.controller.global.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CommentDTO {
-    private Integer id;
+public class CommentRequest {
     private String content;
-    private Integer userId;
     private Integer answerId;
-    private LocalDateTime createdAt;
 }

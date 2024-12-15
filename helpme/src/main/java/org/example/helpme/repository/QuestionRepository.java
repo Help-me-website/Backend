@@ -12,34 +12,14 @@ import java.util.List;
 public interface QuestionRepository extends BaseRepository<QuestionEntity, Integer> {
     // anyone
     List<QuestionEntity> findByUserEmail(String email);
+
     List<QuestionEntity> findByUserUserId(Integer id);
 
 
     @Query("SELECT q FROM QuestionEntity q WHERE q.title LIKE %?1%")
     List<QuestionEntity> findByTitleContaining(String keyword);
 
-    @Query("SELECT q FROM QuestionEntity q " +
-            "JOIN q.questionCategories qc " +
-            "JOIN qc.category c " +
-            "WHERE c.name = :categoryName")
-    List<QuestionEntity> findQuestionsByCategoryName(@Param("categoryName") String categoryName);
-@Query("SELECT q FROM QuestionEntity q " +
-        "JOIN q.questionCategories qc " +
-        "JOIN qc.category c " +
-        "WHERE c.name = :categoryName")
-Page<QuestionEntity> findByCategory(@Param("categoryName") String categoryName, Pageable pageable);
-    @Query("SELECT q FROM QuestionEntity q " +
-            "WHERE LOWER(q.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
-            "OR LOWER(q.content) LIKE LOWER(CONCAT('%', :keyword, '%'))")
-    Page<QuestionEntity> searchByKeyword(@Param("keyword") String keyword, Pageable pageable);
-
-    @Query("SELECT q FROM QuestionEntity q " +
-            "JOIN q.questionCategories qc " +
-            "JOIN qc.category c " +
-            "WHERE c.name = :categoryName " +
-            "AND (LOWER(q.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
-            "OR LOWER(q.content) LIKE LOWER(CONCAT('%', :keyword, '%')))")
-    Page<QuestionEntity> findByCategoryAndSearch(@Param("categoryName") String categoryName,
-                                                 @Param("keyword") String keyword,
-                                                 Pageable pageable);
+    List<QuestionEntity> findByCategoryCategoryId(Integer categoryId);
+    List<QuestionEntity> findByCategory_Name(String categoryName);
 }
+

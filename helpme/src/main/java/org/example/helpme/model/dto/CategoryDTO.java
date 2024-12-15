@@ -13,8 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 public class CategoryDTO {
-    private int id;
+    private int categoryId;
     private String name;
     private String description;
-    private LocalDateTime created;
+    private LocalDateTime createdAt;
 }
