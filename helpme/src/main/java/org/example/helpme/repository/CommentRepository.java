@@ -7,7 +7,6 @@ import java.util.List;
 @Repository
 public interface CommentRepository extends BaseRepository<CommentEntity, Integer> {
     // anyone
-    List<CommentEntity> findByQuestionQuestionId(Integer questionId);
 
     List<CommentEntity> findByAnswerAnswerId(Integer answerId);
 

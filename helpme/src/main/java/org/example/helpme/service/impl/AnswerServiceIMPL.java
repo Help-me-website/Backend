@@ -8,7 +8,9 @@ import org.example.helpme.repository.AnswerRepository;
 import org.example.helpme.service.AnswerService;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,6 +45,27 @@ public class AnswerServiceIMPL implements AnswerService {
   @Override
   public Void deleteAnswer(Integer id) {
     answerRepository.deleteById(id);
+    return null;
+  }
+
+  @Override
+  public AnswerDTO getById(Integer id) {
+    AnswerEntity answerEntity = answerRepository.findByAnswerId(id).orElse(null);
+    if(answerEntity == null) {
+      return null;
+    }
+    return answerMapper.toDto(answerEntity);
+  }
+
+  @Override
+  public Void acceptAnswer(Integer id, String username) {
+    AnswerEntity answerEntity = answerRepository.findById(id).orElse(null);
+    assert answerEntity != null;
+    if (!answerEntity.getQuestion().getUser().getEmail().equals(username)) {
+      throw new RuntimeException("You are not allowed to accept this answer");
+    }
+    answerEntity.setIsAccepted(true);
+    answerRepository.save(answerEntity);
     return null;
   }
 }
