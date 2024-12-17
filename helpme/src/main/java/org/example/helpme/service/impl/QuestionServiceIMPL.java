@@ -81,7 +81,7 @@ public class QuestionServiceIMPL implements QuestionService {
   }
 
   @Override
-  public Iterable<QuestionDTO> getQuestionsByUserEmail(String email) {
+  public List<QuestionDTO> getQuestionsByUserEmail(String email) {
     List<QuestionEntity> questions = questionRepository.findByUserEmail(email);
     return questions
             .stream()

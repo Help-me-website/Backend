@@ -10,11 +10,12 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class QuestionRequest {
-    private String title;
-    private String content;
-    private CategoryRequest category;
+  private String title;
+  private String content;
+  private CategoryRequest category;
 }
-class CategoryRequest{
-    public Integer id;
-    public String name;
+
+class CategoryRequest {
+  public Integer id;
+  public String name;
 }

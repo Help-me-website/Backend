@@ -22,4 +22,6 @@ public class QuestionResponse {
   private int views;
   private String firstName;
   private String lastName;
+  private int numberOfUsers;
 }
+

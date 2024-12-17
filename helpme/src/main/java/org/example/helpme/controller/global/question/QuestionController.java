@@ -24,57 +24,70 @@ public class QuestionController {
   private final UserRepository userRepository;
   private final CategoryService categoryService;
   private final JwtService jwtService;
+
+  private QuestionResponse mapToQuestionResponse(QuestionDTO question) {
+    Integer userId = question.getUserId();
+    var user = userService.getUserById(userId); // Assuming a method to fetch user by ID
+
+    return QuestionResponse.builder()
+            .id(question.getId())
+            .title(question.getTitle())
+            .content(question.getContent())
+            .category(question.getCategory())
+            .createdAt(question.getCreatedAt())
+            .updatedAt(question.getUpdatedAt())
+            .views(question.getViews())
+            .firstName(user.getFirstName())
+            .lastName(user.getLastName())
+            .numberOfUsers(question.getNumberOfUsers())
+            .build();
+  }
   @GetMapping("/all")
   public ResponseEntity<Iterable<QuestionResponse>> getAllQuestions() {
     List<QuestionDTO> questionDTOS = questionService.getAllQuestions();
 
     List<QuestionResponse> responses = questionDTOS.stream()
-            .map(question -> {
-              // Fetch user details
-              Integer userId = question.getUserId();
-              var user = userService.getUserById(userId); // Assuming a method to fetch user by ID
-
-              // Map to QuestionResponse
-              return QuestionResponse.builder()
-                      .id(question.getId())
-                      .title(question.getTitle())
-                      .content(question.getContent())
-                      .category(question.getCategory())
-                      .createdAt(question.getCreatedAt())
-                      .updatedAt(question.getUpdatedAt())
-                      .views(question.getViews())
-                      .firstName(user.getFirstName())
-                      .lastName(user.getLastName())
-                      .build();
-            })
+            .map(this::mapToQuestionResponse)
             .toList();
     return ResponseEntity.ok(responses);
   }
   @GetMapping("/faq")
-  public ResponseEntity<Iterable<QuestionDTO>> getFaqQuestions() {
-    Iterable<QuestionDTO> questionDTOS = questionService.getFAQ();
-    return ResponseEntity.ok(questionDTOS);
+  public ResponseEntity<Iterable<QuestionResponse>> getFaqQuestions() {
+    List<QuestionDTO> questionDTOS = questionService.getFAQ();
+    List<QuestionResponse> responses = questionDTOS.stream()
+            .map(this::mapToQuestionResponse)
+            .toList();
+    return ResponseEntity.ok(responses);
   }
-
   @GetMapping("/by-user/{email}")
-  public ResponseEntity<Iterable<QuestionDTO>> getQuestionsByUserEmail(@PathVariable String email) {
-    Iterable<QuestionDTO> questionDTOS = questionService.getQuestionsByUserEmail(email);
-    return ResponseEntity.ok(questionDTOS);
+  public ResponseEntity<Iterable<QuestionResponse>> getQuestionsByUserEmail(@PathVariable String email) {
+    List<QuestionDTO> questionDTOS = questionService.getQuestionsByUserEmail(email);
+    List<QuestionResponse> responses = questionDTOS.stream()
+            .map(this::mapToQuestionResponse)
+            .toList();
+    return ResponseEntity.ok(responses);
   }
   @GetMapping("/{id}")
-  public ResponseEntity<QuestionDTO> getQuestionById(@PathVariable Integer id) {
+  public ResponseEntity<QuestionResponse> getQuestionById(@PathVariable Integer id) {
     QuestionDTO questionDTO = questionService.getQuestionById(id);
-    return ResponseEntity.ok(questionDTO);
+    QuestionResponse response = mapToQuestionResponse(questionDTO);
+    return ResponseEntity.ok(response);
   }
   @GetMapping("/category-name/{category}")
-  public ResponseEntity<Iterable<QuestionDTO>> getQuestionsByCategory(@PathVariable String category) {
-    Iterable<QuestionDTO> questionDTOS = questionService.getQuestionsByCategory(category);
-    return ResponseEntity.ok(questionDTOS);
+  public ResponseEntity<Iterable<QuestionResponse>> getQuestionsByCategory(@PathVariable String category) {
+    List<QuestionDTO> questionDTOS = questionService.getQuestionsByCategory(category);
+    List<QuestionResponse> responses = questionDTOS.stream()
+            .map(this::mapToQuestionResponse)
+            .toList();
+    return ResponseEntity.ok(responses);
   }
   @GetMapping("/category-id/{categoryId}")
-  public ResponseEntity<Iterable<QuestionDTO>> getQuestionsByCategory(@PathVariable Integer categoryId) {
-    Iterable<QuestionDTO> questionDTOS = questionService.getQuestionsByCategory(categoryId);
-    return ResponseEntity.ok(questionDTOS);
+  public ResponseEntity<Iterable<QuestionResponse>> getQuestionsByCategory(@PathVariable Integer categoryId) {
+    List<QuestionDTO> questionDTOS = questionService.getQuestionsByCategory(categoryId);
+    List<QuestionResponse> responses = questionDTOS.stream()
+            .map(this::mapToQuestionResponse)
+            .toList();
+    return ResponseEntity.ok(responses);
   }
   @PostMapping("/modify/add")
   public ResponseEntity<QuestionDTO> addQuestion(@RequestBody QuestionRequest questionRequest,@RequestHeader("Authorization") String token) {
@@ -102,5 +115,4 @@ public class QuestionController {
     questionService.deleteQuestion(id);
     return ResponseEntity.ok().build();
   }
-
 }
