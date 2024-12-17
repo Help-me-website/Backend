@@ -1,6 +1,7 @@
 package org.example.helpme.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.helpme.controller.user.UserUpdate;
 import org.example.helpme.mapper.Mapper;
 import org.example.helpme.model.dto.UserDTO;
 import org.example.helpme.model.entity.AccountStatus;
@@ -65,6 +66,14 @@ public class UserServiceIMPL implements UserService {
   public UserDTO loadUserByEmail(String email) {
     return userMapper.toDto(userRepository.findByEmail(email).orElse(null));
   }
-
+  @Override
+  public Optional<UserDTO> updateUser(String username, UserUpdate updatedUser) {
+    UserEntity user = userRepository.findByEmail(username).orElse(null);
+    assert user != null;
+    user.setFirstName(updatedUser.getFirstname());
+    user.setLastName(updatedUser.getLastname());
+    userRepository.save(user);
+    return Optional.of(userMapper.toDto(user));
+  }
 
 }

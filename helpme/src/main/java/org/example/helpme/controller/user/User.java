@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
-@PreAuthorize("hasRole('user')")
 @RequestMapping("/user")
 public class User {
     private final UserService userService;

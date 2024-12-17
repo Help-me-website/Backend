@@ -21,5 +21,7 @@ public interface QuestionRepository extends BaseRepository<QuestionEntity, Integ
 
     List<QuestionEntity> findByCategoryCategoryId(Integer categoryId);
     List<QuestionEntity> findByCategory_Name(String categoryName);
+    @Query("SELECT q FROM QuestionEntity q ORDER BY q.numberOfUsers DESC LIMIT 10")
+    List<QuestionEntity> getFAQ();
 }
 

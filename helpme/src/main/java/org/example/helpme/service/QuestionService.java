@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
 public interface QuestionService {
-    public Iterable<QuestionDTO> getAllQuestions();
+    public List<QuestionDTO> getAllQuestions();
     public QuestionDTO getQuestionById(Integer id);
     public QuestionDTO saveQuestion(QuestionDTO questionDTO);
     public QuestionDTO updateQuestion(QuestionDTO questionDTO);
@@ -18,4 +18,6 @@ public interface QuestionService {
     public Void deleteQuestion(Integer id);
     public List<QuestionDTO> getQuestionsByCategory(String categoryName);
     public List<QuestionDTO> getQuestionsByCategory(Integer categoryId);
+
+    public List<QuestionDTO> getFAQ();
 }
