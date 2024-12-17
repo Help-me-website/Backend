@@ -14,7 +14,7 @@ public interface QuestionService {
     public QuestionDTO saveQuestion(QuestionDTO questionDTO);
     public QuestionDTO updateQuestion(QuestionDTO questionDTO);
 //    public Iterable<QuestionDTO> getQuestionsByUserId(Integer id);
-    public Iterable<QuestionDTO> getQuestionsByUserEmail(String email);
+    public List<QuestionDTO> getQuestionsByUserEmail(String email);
     public Void deleteQuestion(Integer id);
     public List<QuestionDTO> getQuestionsByCategory(String categoryName);
     public List<QuestionDTO> getQuestionsByCategory(Integer categoryId);
