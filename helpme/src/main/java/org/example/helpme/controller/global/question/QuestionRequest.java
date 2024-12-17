@@ -12,5 +12,9 @@ import java.util.List;
 public class QuestionRequest {
     private String title;
     private String content;
-    private CategoryDTO category;
+    private CategoryRequest category;
+}
+class CategoryRequest{
+    public Integer id;
+    public String name;
 }

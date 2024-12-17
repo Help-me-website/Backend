@@ -26,6 +26,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorizeRequests -> {
                     authorizeRequests
                             .requestMatchers("/auth/**").permitAll()
+                            .requestMatchers("/user/profile/**").permitAll()
+                            .requestMatchers("/swagger-ui.html").permitAll()
                             .requestMatchers("/home/**").permitAll()
                             .requestMatchers("/admin/**").hasRole("admin")
                             .requestMatchers("/home/questions/**").permitAll()

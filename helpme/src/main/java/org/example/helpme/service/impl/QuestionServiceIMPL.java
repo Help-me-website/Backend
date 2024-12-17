@@ -24,7 +24,7 @@ public class QuestionServiceIMPL implements QuestionService {
   private final Mapper<QuestionEntity, QuestionDTO> questionMapper;
 
   @Override
-  public Iterable<QuestionDTO> getAllQuestions() {
+  public List<QuestionDTO> getAllQuestions() {
     List<QuestionEntity> questions = questionRepository.findAll();
     return questions
             .stream()
@@ -91,6 +91,15 @@ public class QuestionServiceIMPL implements QuestionService {
   @Override
   public List<QuestionDTO> getQuestionsByCategory(Integer categoryId) {
     List<QuestionEntity> questions = questionRepository.findByCategoryCategoryId(categoryId);
+    return questions
+            .stream()
+            .map(questionMapper::toDto)
+            .collect(Collectors.toList());
+  }
+
+  @Override
+  public List<QuestionDTO> getFAQ() {
+    List<QuestionEntity> questions = questionRepository.getFAQ();
     return questions
             .stream()
             .map(questionMapper::toDto)
